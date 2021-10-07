@@ -1,75 +1,67 @@
 from tkinter import *  # import tkinter library
 import tkinter.ttk as ttk
-import tkinter.messagebox as mbox  # import okienek z komunikatami
+import tkinter.messagebox as mbox  # import of message boxes
 
-calculator = Tk()  # tworzenie okna obiektu
-calculator.configure(background='grey16')  # kolor tla
-calculator.title('Kalkulator')  # zmiana nazwy okna
+calculator = Tk()  # creating an object window
+calculator.configure(background='grey16')  # background color
+calculator.title('Calculator')  # window's name change
 operator = ""
-calculator.geometry('900x500')  # zmiana rozmiaru okna
+calculator.geometry('900x500')  # window's size change
 
-# tlo
-img1 = PhotoImage(file="tlo.png")  # tlo z gradientem
+# background
+img1 = PhotoImage(file="tlo.png")  # background with gradient
 labelimage = Label(
     calculator,
     image=img1,
     background="grey16",
 )
-labelimage.pack(pady=0)  # tlo zajmuje rowno cale okno
+labelimage.pack(pady=0)  # setting size of background as full size window
 
+# pop-up windows
+def exit_win():  # closing window function
+    ans = mbox.askyesno('Close', 'Are you sure?')  # window with an answer "YES" or "NO"
+    if ans:  
+        calculator.destroy()  # destroy window
 
-# wyskakujace okienka
-def exit_win():  # funkcja okienka zamykajacego
-    ans = mbox.askyesno('Zamknij', 'Czy jesteś pewien?')  # tworzenie okna z odpowiedzia tak lub nie
-    if ans:  # warunek
-        calculator.destroy()  # zamkniecie okna
-
-
-# napisy
+# subtitles
 part_text = StringVar()
-part_label = Label(calculator, text='Dane', fg='gold', font=('bold', 14), bg='gray22')  # tresc pierwszego napisu
-part_label.place(x=120, y=50)  # umiejscowienie napisu w oknie z uzyciem place
+part_label = Label(calculator, text='Data', fg='gold', font=('bold', 14), bg='gray22')  # the first subtitle
+part_label.place(x=120, y=50)  # placing subtitle on the window
 
-part_label = Label(calculator, text='Wynik', fg='gold', font=('bold', 14), bg='gray22')  # tresc drugiego napisu
-part_label.place(x=480, y=50)  # umiejscowienie napisu w oknie z uzyciem place
+part_label = Label(calculator, text='Score', fg='gold', font=('bold', 14), bg='gray22')  #the second subtitle
+part_label.place(x=480, y=50)  
 
-# wyswietlacz
+# display
 text_Input = StringVar()
 Total = StringVar()
 e = Entry(calculator, font=('Digital-7', 20, 'bold'), fg='red', textvariable=text_Input, bd=10, insertwidth=2,
-          # czcionka Digital-7
-          bg="black", justify='left')  # justify okresla od ktorej strony wyswietli sie napis
-e.place(x=120, y=80)  # textvariable laczy wyswietlacz z odpowiednia funkcja
+          bg="black", justify='left')  # justify is used to define where subtitle will appear
+e.place(x=120, y=80)  # textvariable matches subtitle with proper function
 
 e = Entry(calculator, font=('Digital-7', 20, 'bold'), fg='green', textvariable=Total, bd=10, insertwidth=2,
-          # czcionka Digital-7
           bg="black", justify='left')
 e.place(x=480, y=80)
 
+# button functions
+def btnClick(numbers):  # button operation function
+    global operator  # allows you to modify a variable outside the function
+    operator = operator + str(numbers)  # converts specific values to string
+    text_Input.set(operator)  # places the numbers clicked on the display
 
-# funkcje przyciskow
-def btnClick(numbers):  # funkcja dzialania przyciskow
-    global operator  # pozwala modyfikowac zmienna na zewnatrz funkcji
-    operator = operator + str(numbers)  # zamienia specyficzne wartosci na string
-    text_Input.set(operator)  # umieszcza klikniete liczby na wyswietlaczu
-
-
-def btnClearDisplay():  # funkcja czyszczenia wyswietlacza
+def btnClearDisplay():  # display cleaning function
     global operator
     operator = ""
     text_Input.set("")
-    Total.set("")  # w tym przypadku set nie umieszcza nic i w ten sposob czysci ekran wyswietlacza
+    Total.set("")  # in this case, set puts nothing and thus clears the display screen
 
-
-def btnEqualsInput():  # funcja wyswietlajaca wynik
+def btnEqualsInput():  # function displaying the result
     global operator
-    sumup = str(eval(operator))  # funkcja pozwala wykonywac dowolne ciagi znakow jako kod Pythona
-    Total.set(sumup)  # umieszcza wynik Total jest umieszczone w drugim wyswietlaczu
+    sumup = str(eval(operator))  # this function allows any strings to be executed as Python code
+    Total.set(sumup)  # places the result Total is listed in the second display
     operator = ""
 
-
-# grafika na przyciski
-img_0 = PhotoImage(file="przycisk0.png")  # import grafiki z folderu
+# graphics on buttons
+img_0 = PhotoImage(file="przycisk0.png")  # import graphics from a folder
 img_1 = PhotoImage(file="przycisk1.png")
 img_2 = PhotoImage(file="przycisk2.png")
 img_3 = PhotoImage(file="przycisk3.png")
@@ -88,8 +80,8 @@ img_15 = PhotoImage(file="przycisk_rownasie.png")
 img_16 = PhotoImage(file="przycisk_close.png")
 img_17 = PhotoImage(file="przycisk_cofnij.png")
 
-# przyciski wielkosc, grafika i przypisane funkcje
-przycisk_0 = Button(calculator, image=img_0, border=0, command=lambda: btnClick(0))  # przyciski z liczbami i dzialaniami
+# buttons size, graphics and assigned functions
+przycisk_0 = Button(calculator, image=img_0, border=0, command=lambda: btnClick(0))  # buttons representing numbers and symbols of mathematical equations
 przycisk_1 = Button(calculator, image=img_1, border=0, command=lambda: btnClick(1))
 przycisk_2 = Button(calculator, image=img_2, border=0, command=lambda: btnClick(2))
 przycisk_3 = Button(calculator, image=img_3, border=0, command=lambda: btnClick(3))
@@ -104,12 +96,12 @@ przycisk_11 = Button(calculator, image=img_12, border=0, command=lambda: btnClic
 przycisk_12 = Button(calculator, image=img_11, border=0, command=lambda: btnClick("+"))
 przycisk_13 = Button(calculator, image=img_13, border=0, command=lambda: btnClick("-"))
 przycisk_14 = Button(calculator, image=img_10, border=0, command=lambda: btnClick("*"))
-przycisk_15 = Button(calculator, image=img_15, border=0, command=btnEqualsInput)  # przycisk rowna sie
-przycisk_16 = ttk.Button(calculator, image=img_16, command=exit_win)  # przycisk zamykajacy
-przycisk_17 = Button(calculator, image=img_17, border=0, command=btnClearDisplay)  # przycisk czyszczacy
+przycisk_15 = Button(calculator, image=img_15, border=0, command=btnEqualsInput)  # button used for "="
+przycisk_16 = ttk.Button(calculator, image=img_16, command=exit_win)  # close button
+przycisk_17 = Button(calculator, image=img_17, border=0, command=btnClearDisplay)  # cleaning button
 
-# przyciski rozmieszczenie
-przycisk_0.place(x=50, y=390)  # wspolrzedna przyciskow
+# buttons arrangement
+przycisk_0.place(x=50, y=390)  #button coordinates
 przycisk_1.place(x=50, y=180)
 przycisk_2.place(x=212, y=180)
 przycisk_3.place(x=375, y=180)
@@ -128,5 +120,5 @@ przycisk_15.place(x=700, y=320)
 przycisk_16.place(x=695, y=387)
 przycisk_17.place(x=700, y=180)
 
-calculator.resizable(0, 0)  # uniemozliwia zmiane rozmiaru okna i zapobiega nieczytelnosci
-calculator.mainloop()  # glowna petla napedzajaca caly program
+calculator.resizable(0, 0)  # resizeable makes window's size unchangeable
+calculator.mainloop()  # mainloop running all program

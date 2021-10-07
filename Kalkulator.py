@@ -1,4 +1,4 @@
-from tkinter import *  # import biblioteki tkinter
+from tkinter import *  # import tkinter library
 import tkinter.ttk as ttk
 import tkinter.messagebox as mbox  # import okienek z komunikatami
 

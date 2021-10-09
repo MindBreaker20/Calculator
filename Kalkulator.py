@@ -121,4 +121,4 @@ przycisk_16.place(x=695, y=387)
 przycisk_17.place(x=700, y=180)
 
 calculator.resizable(0, 0)  # resizeable makes window's size unchangeable
-calculator.mainloop()  # mainloop running all program
+calculator.mainloop()  # mainloop is running all program

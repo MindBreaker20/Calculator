@@ -61,24 +61,24 @@ def btnEqualsInput():  # function displaying the result
     operator = ""
 
 # graphics on buttons
-img_0 = PhotoImage(file="przycisk0.png")  # import graphics from a folder
-img_1 = PhotoImage(file="przycisk1.png")
-img_2 = PhotoImage(file="przycisk2.png")
-img_3 = PhotoImage(file="przycisk3.png")
-img_4 = PhotoImage(file="przycisk4.png")
-img_5 = PhotoImage(file="przycisk5.png")
-img_6 = PhotoImage(file="przycisk6.png")
-img_7 = PhotoImage(file="przycisk7.png")
-img_8 = PhotoImage(file="przycisk8.png")
-img_9 = PhotoImage(file="przycisk9.png")
-img_10 = PhotoImage(file="przycisk_mnoz.png")
-img_11 = PhotoImage(file="przycisk_plus.png")
-img_12 = PhotoImage(file="przycisk_dziel.png")
-img_13 = PhotoImage(file="przycisk_minus.png")
-img_14 = PhotoImage(file="przycisk_kropka.png")
-img_15 = PhotoImage(file="przycisk_rownasie.png")
-img_16 = PhotoImage(file="przycisk_close.png")
-img_17 = PhotoImage(file="przycisk_cofnij.png")
+img_0 = PhotoImage(file="images/button_0.png")  # import graphics from a folder
+img_1 = PhotoImage(file="images/button_1.png")
+img_2 = PhotoImage(file="images/button_2.png")
+img_3 = PhotoImage(file="images/button_3.png")
+img_4 = PhotoImage(file="images/button_4.png")
+img_5 = PhotoImage(file="images/button_5.png")
+img_6 = PhotoImage(file="images/button_6.png")
+img_7 = PhotoImage(file="images/button_7.png")
+img_8 = PhotoImage(file="images/button_8.png")
+img_9 = PhotoImage(file="images/button_9.png")
+img_10 = PhotoImage(file="images/multiple_button.png")
+img_11 = PhotoImage(file="images/plus_button.png")
+img_12 = PhotoImage(file="images/divide_button.png")
+img_13 = PhotoImage(file="images/minus_button.png")
+img_14 = PhotoImage(file="images/dot_button.png")
+img_15 = PhotoImage(file="images/equal_button.png")
+img_16 = PhotoImage(file="images/close_button.png")
+img_17 = PhotoImage(file="images/back_button.png")
 
 # buttons size, graphics and assigned functions
 przycisk_0 = Button(calculator, image=img_0, border=0, command=lambda: btnClick(0))  # buttons representing numbers and symbols of mathematical equations
